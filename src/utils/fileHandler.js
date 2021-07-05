@@ -20,11 +20,20 @@ const readCSV = async (filePath) => {
   })
 }
 
+const ensureDirSync = (dirPath) => {
+  try {
+    return fs.mkdirSync(dirPath)
+  } catch (err) {
+    if (err.code !== 'EEXIST') console.log('err', err)
+  }
+}
+
 const generateCSV = async (data) => {
   const csv = Papa.unparse({
     fields: ['SKU', 'Description', 'Source'],
     data: data,
   })
+  await ensureDirSync(`${__dirname}/../../output`)
   await fs.writeFileSync(
     `${__dirname}/../../output/result_output.csv`,
     csv,
