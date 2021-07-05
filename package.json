@@ -1,0 +1,25 @@
+{
+  "name": "bng-merger",
+  "version": "1.0.0",
+  "description": "This repo will merge catalogs of different suppliers to one unique dataset",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bng",
+    "products",
+    "catalogs"
+  ],
+  "author": "Ehsan Gazar",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.0.0"
+  },
+  "dependencies": {
+    "prettier": "^2.3.2"
+  }
+}
