@@ -4,7 +4,7 @@ const asyncForEach = require('./utils/asyncForEach')
 
 const readStep = async (inputDirectoryPath) => {
   const fileNames = await fileHandler.readDirectory(inputDirectoryPath)
-  const sources = fileHandler.getCatalogLabels(fileNames)
+  const sources = fileHandler.getSources(fileNames)
   const catalogsData = await fileHandler.getCatalogsData(sources)
   return catalogsData
 }

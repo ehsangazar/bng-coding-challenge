@@ -3,11 +3,15 @@ const Papa = require('papaparse')
 const asyncForEach = require('./asyncForEach')
 
 const readDirectory = async (directoryPath) => {
+  if (!directoryPath) return []
+  if (!fs.existsSync(directoryPath)) return []
   const files = await fs.readdirSync(directoryPath)
   return files
 }
 
 const readCSV = async (filePath) => {
+  if (!filePath) return []
+  if (!fs.existsSync(filePath)) return []
   const csvFile = fs.readFileSync(filePath)
   const csvData = csvFile.toString()
   return new Promise((resolve) => {
@@ -44,7 +48,7 @@ const generateCSV = async (data) => {
   )
 }
 
-const getCatalogLabels = (fileNames) => {
+const getSources = (fileNames) => {
   return Object.values(fileNames)
     .filter((fileName) => fileName.includes('catalog'))
     .map((catalogFileName) => catalogFileName.replace(/.csv|catalog/gi, ''))
@@ -70,7 +74,8 @@ const getCatalogsData = async (sources) => {
 module.exports = {
   readDirectory,
   readCSV,
+  ensureDirSync,
   generateCSV,
-  getCatalogLabels,
+  getSources,
   getCatalogsData,
 }
