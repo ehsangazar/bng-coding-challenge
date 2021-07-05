@@ -12,13 +12,13 @@ describe('readFile', () => {
   })
   test('getCatalogLabels should work as expected', async () => {
     const fileNames = await readFiles.readDirectory(testDirectoryPath)
-    const catalogLabels = await readFiles.getCatalogLabels(fileNames)
-    expect(catalogLabels.length).toBe(2)
+    const sources = await readFiles.getCatalogLabels(fileNames)
+    expect(sources.length).toBe(2)
   })
   test('getCatalogsData should work as expected', async () => {
     const fileNames = await readFiles.readDirectory(testDirectoryPath)
-    const catalogLabels = await readFiles.getCatalogLabels(fileNames)
-    const catalogs = await readFiles.getCatalogsData(catalogLabels)
+    const sources = await readFiles.getCatalogLabels(fileNames)
+    const catalogs = await readFiles.getCatalogsData(sources)
     expect(catalogs.length).toBe(2)
   })
 })
